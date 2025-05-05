@@ -21,13 +21,11 @@ body {
 
 .calculator-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: minmax(100px, auto) repeat(5, 1fr);
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    padding: 1rem;
-    min-height: 65vh;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    min-height: 100vh;
 }
 
 .calculator-grid > button {
@@ -76,8 +74,6 @@ body {
     }
 
     .calculator-grid {
-        justify-content: center;
-        align-content: center;
         grid-template-columns: repeat(4, 70px);
         grid-template-rows: minmax(80px, auto) repeat(5, 70px);
         padding: 10px;
