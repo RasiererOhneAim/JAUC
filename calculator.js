@@ -57,32 +57,32 @@ class Calculator {
     }
 
     getDisplayNumber(number) {
-        const stringNumber = number.toString()
-        const integerDigits = parseFloat(stringNumber.split('.')[0])
-        const decimalDigits = stringNumber.split('.')[1]
-        let integerDisplay
-        if (isNaN(integerDigits)) {
-            integerDisplay = ''
-        } else {
-            integerDisplay = integerDigits.toLocaleString('en', {
-                maximumFractionDigits: 0
-            })
-        }
-        if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`
+        if (number == null || number === '') return ''
+        const [integer, decimal] = number.toString().split('.')
+        const integerDisplay = Number(integer).toLocaleString('en')
+        if (decimal != null) {
+            return `${integerDisplay}.${decimal}`
         } else {
             return integerDisplay
         }
     }
 
     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
-        if(this.operation != null) {
-            this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        const currentDisplay = this.getDisplayNumber(this.currentOperand)
+        if (this.currentOperandTextElement.innerText !== currentDisplay) {
+            this.currentOperandTextElement.innerText = currentDisplay
+        }
+
+        if (this.operation != null) {
+            const previousDisplay = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+            if (this.previousOperandTextElement.innerText !== previousDisplay) {
+                this.previousOperandTextElement.innerText = previousDisplay
+            }
         } else {
             this.previousOperandTextElement.innerText = ''
         }
     }
+
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -96,7 +96,7 @@ const currentOperandTextElement = document.querySelector('[data-currentOperand]'
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 numberButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('touchstart', () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })

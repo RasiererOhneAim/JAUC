@@ -56,3 +56,27 @@ body {
     color: white;
     font-size: 2.5rem;
 }
+
+@media (max-width: 600px) {
+    .calculator-grid {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: minmax(100px, auto) repeat(5, 70px);
+        padding: 10px;
+    }
+
+    .calculator-grid > button {
+        font-size: 1.5rem;
+    }
+
+    .output {
+        padding: 8px;
+    }
+
+    .output .previous-operand {
+        font-size: 1.2rem;
+    }
+
+    .output .current-operand {
+        font-size: 2rem;
+    }
+}
