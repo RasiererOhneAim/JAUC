@@ -82,6 +82,11 @@ class Calculator {
             this.previousOperandTextElement.innerText = ''
         }
     }
+
+    roundCurrent() {
+        if (this.currentOperand === '') return
+        this.currentOperand = Math.round(parseFloat(this.currentOperand)).toString()
+    }
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -91,6 +96,7 @@ const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-allClear]');
 const previousOperandTextElement = document.querySelector('[data-previousOperand]');
 const currentOperandTextElement = document.querySelector('[data-currentOperand]');
+const roundButton = document.querySelector('[data-round]');
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
@@ -108,6 +114,11 @@ operationButtons.forEach(button => {
     })
 })
 
+roundButton.addEventListener('click', () =>{
+    calculator.roundCurrent()
+    calculator.updateDisplay()
+})
+
 equalsButton.addEventListener('click', () => {
     calculator.compute()
     calculator.updateDisplay()
@@ -121,4 +132,37 @@ allClearButton.addEventListener('click', () => {
 deleteButton.addEventListener('click', () => {
     calculator.delete()
     calculator.updateDisplay()
+})
+
+window.addEventListener('keydown', (e) => {
+
+    const key = e.key
+
+        if (!isNaN(parseFloat(key))) {
+            calculator.appendNumber(key)
+            calculator.updateDisplay()
+        } else if (key === '.' || key === ',') {
+            calculator.appendNumber('.')
+            calculator.updateDisplay()
+        } else if (key === '+' || key === '-') {
+            calculator.chooseOperation(key)
+            calculator.updateDisplay()
+        } else if (key === '*' || key === 'x' || key === 'X') {
+            calculator.chooseOperation('×')
+            calculator.updateDisplay()
+        } else if (key === '/') {
+            e.preventDefault()
+            calculator.chooseOperation('÷')
+            calculator.updateDisplay()
+        } else if (key === 'Enter' || key === '=') {
+            calculator.compute()
+            calculator.updateDisplay()
+        } else if (key === 'Backspace') {
+            calculator.delete()
+            calculator.updateDisplay()
+        } else if (key.toLowerCase() === 'c' || key === 'Escape') {
+            calculator.clear()
+            calculator.updateDisplay()
+        }
+
 })
