@@ -1,3 +1,15 @@
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equals]');
+const deleteButton = document.querySelector('[data-delete]');
+const allClearButton = document.querySelector('[data-allClear]');
+const previousOperandTextElement = document.querySelector('[data-previousOperand]');
+const currentOperandTextElement = document.querySelector('[data-currentOperand]');
+
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+
+const allButtons = document.querySelectorAll('button');
+
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement
@@ -84,17 +96,6 @@ class Calculator {
     }
 }
 
-const numberButtons = document.querySelectorAll('[data-number]');
-const operationButtons = document.querySelectorAll('[data-operation]');
-const equalsButton = document.querySelector('[data-equals]');
-const deleteButton = document.querySelector('[data-delete]');
-const allClearButton = document.querySelector('[data-allClear]');
-const previousOperandTextElement = document.querySelector('[data-previousOperand]');
-const currentOperandTextElement = document.querySelector('[data-currentOperand]');
-
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
-
-const allButtons = document.querySelectorAll('button');
 allButtons.forEach(button => {
     button.addEventListener('touchstart', () => {
         button.blur();
