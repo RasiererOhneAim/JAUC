@@ -82,7 +82,6 @@ class Calculator {
             this.previousOperandTextElement.innerText = ''
         }
     }
-
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -95,15 +94,15 @@ const currentOperandTextElement = document.querySelector('[data-currentOperand]'
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
-const isMobile = /Mobi|Android/i.test(navigator.userAgent)
+const allButtons = document.querySelectorAll('button');
+allButtons.forEach(button => {
+    button.addEventListener('touchstart', () => {
+        button.blur();
+    });
+});
 
 numberButtons.forEach(button => {
-    const event = 'click'
-    if(isMobile === true){
-        const event = 'touchstart'
-    }
-
-    button.addEventListener(event, () => {
+    button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })

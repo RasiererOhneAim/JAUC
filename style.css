@@ -24,9 +24,12 @@ body {
     margin: auto;
     padding: 1rem;
 }
-button:active {
-    background-color: inherit;
-}
+
+button {
+     touch-action: manipulation;
+     -webkit-tap-highlight-color: transparent;
+ }
+
 .calculator-grid > button {
     cursor: pointer;
     font-size: 2rem;
