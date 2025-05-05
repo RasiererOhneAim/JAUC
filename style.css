@@ -82,19 +82,13 @@ body {
         background: #FF7514;
     }
 
-    .calculator-grid {
-        grid-template-columns: repeat(4, 70px);
-        grid-template-rows: minmax(80px, auto) repeat(5, 70px);
-        padding: 10px;
-    }
-
     .calculator-grid > button {
         font-size: 1.5rem;
         background-color: #ffffffcc;
     }
 
     .calculator-grid > button:hover {
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: #ffffffcc;
     }
 
     .output {
@@ -103,7 +97,7 @@ body {
 
     .output .previous-operand {
         font-size: 1.2rem;
-        background-color: #ffffffcc;
+        color: #ffffffcc;
     }
 
     .output .current-operand {
