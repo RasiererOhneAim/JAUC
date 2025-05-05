@@ -21,8 +21,6 @@ body {
 
 .calculator-grid {
     display: grid;
-    justify-content: center;
-    align-content: center;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: minmax(100px, auto) repeat(5, 1fr);
     width: 100%;
