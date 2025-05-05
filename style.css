@@ -38,18 +38,12 @@ body {
     outline: none;
     background-color: rgba(255, 255, 255, 0.75);
     color: black;
-    -webkit-appearance: none;
-    appearance: none;
     user-select: none;
     touch-action: manipulation;
 }
 .calculator-grid > button:hover {
     background-color: rgba(255, 255, 255, .90);
 }
-.calculator-grid > button:active {
-     background-color: rgba(255, 255, 255, .75);
-     outline: none;
- }
 
 .span-two {
     grid-column: span 2;
@@ -95,6 +89,10 @@ body {
     .calculator-grid > button {
         font-size: 1.5rem;
         background-color: #ffffffcc;
+    }
+
+    .calculator-grid > button:hover {
+        background-color: rgba(255, 255, 255, 0.75);
     }
 
     .output {
