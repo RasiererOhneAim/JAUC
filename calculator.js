@@ -95,8 +95,15 @@ const currentOperandTextElement = document.querySelector('[data-currentOperand]'
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
+const isMobile = /Mobi|Android/i.test(navigator.userAgent)
+
 numberButtons.forEach(button => {
-    button.addEventListener('touchstart', () => {
+    const event = 'click'
+    if(isMobile === true){
+        const event = 'touchstart'
+    }
+
+    button.addEventListener(event, () => {
         calculator.appendNumber(button.innerText)
         calculator.updateDisplay()
     })
