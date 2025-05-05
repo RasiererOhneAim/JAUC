@@ -2,7 +2,12 @@
     box-sizing: border-box;
     font-family: helvetica, sans-serif;
     font-weight: normal;
+    -webkit-tap-highlight-color: transparent;
 }
+html {
+     touch-action: manipulation;
+     font-size: 100%;
+ }
 
 body {
     padding: 0;
@@ -10,39 +15,41 @@ body {
     height: 100vh;
     align-content: center;
     background: linear-gradient(to right,#D6AE01, #FF7514);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calculator-grid {
     display: grid;
-    justify-content: center;
-    align-content: center;
-    min-height: 65vh;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: minmax(100px, auto) repeat(5, 1fr);
     width: 100%;
     max-width: 400px;
     margin: auto;
     padding: 1rem;
+    min-height: 65vh;
 }
-
-button {
-     touch-action: manipulation;
-     -webkit-tap-highlight-color: transparent;
- }
 
 .calculator-grid > button {
-    cursor: pointer;
     font-size: 2rem;
+    cursor: pointer;
     border: 1px solid white;
     outline: none;
-    background-color: rgba(255, 255, 255, .75);
-    touch-action: manipulation;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+    -webkit-appearance: none;
+    appearance: none;
     user-select: none;
+    touch-action: manipulation;
 }
-
 .calculator-grid > button:hover {
     background-color: rgba(255, 255, 255, .90);
 }
+.calculator-grid > button:active {
+     background-color: rgba(255, 255, 255, .75);
+     outline: none;
+ }
 
 .span-two {
     grid-column: span 2;
@@ -71,13 +78,17 @@ button {
 }
 
 @media (max-width: 600px) {
+    html {
+        font-size: 90%;
+    }
+
     body {
         background: #FF7514;
     }
 
     .calculator-grid {
         grid-template-columns: repeat(4, 70px);
-        grid-template-rows: minmax(100px, auto) repeat(5, 70px);
+        grid-template-rows: minmax(80px, auto) repeat(5, 70px);
         padding: 10px;
     }
 
