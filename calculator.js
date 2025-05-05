@@ -94,14 +94,6 @@ const currentOperandTextElement = document.querySelector('[data-currentOperand]'
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
-const allButtons = document.querySelectorAll('button');
-
-allButtons.forEach(button => {
-    button.addEventListener('touchstart', () => {
-        button.blur();
-    });
-});
-
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText)
