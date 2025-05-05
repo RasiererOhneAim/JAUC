@@ -17,7 +17,6 @@ body {
     background: linear-gradient(to right,#D6AE01, #FF7514);
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .calculator-grid {
@@ -74,10 +73,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    html {
-        font-size: 90%;
-    }
-
     body {
         background: #FF7514;
     }
@@ -91,13 +86,8 @@ body {
         background-color: #ffffffcc;
     }
 
-    .output {
-        padding: 8px;
-    }
-
     .output .previous-operand {
         font-size: 1.2rem;
-        color: #ffffffcc;
     }
 
     .output .current-operand {
