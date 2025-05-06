@@ -1,4 +1,4 @@
-MIT License
+The MIT License (MIT)
 
 Copyright (c) 2025 Vincent Verhöfen vincent.verhoefen@t-online.de
 
