@@ -19,14 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
----
-
-### Third-party software
-
-This project uses the library [`decimal.js`](https://github.com/MikeMcl/decimal.js/),
-which is licensed under the MIT License:
-
-© 2014–2024 Michael Mclaughlin
-<https://github.com/MikeMcl/decimal.js>
-<https://github.com/MikeMcl/decimal.js/blob/master/LICENSE>
