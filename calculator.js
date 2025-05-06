@@ -31,35 +31,52 @@ class Calculator {
     }
 
     compute() {
-        let computation
-        const prev = parseFloat(this.previousOperand)
-        const current = parseFloat(this.currentOperand)
-        if(isNaN(prev) || isNaN(current)) return
-        switch(this.operation) {
-            case '+':
-                computation = prev + current
-                break
-            case '-':
-                computation = prev - current
-                break
-            case '×':
-                computation = prev * current
-                break
-            case '÷':
-                computation = prev / current
-                break
-            default:
-                return
+        if (!this.operation || this.currentOperand === '' || this.previousOperand === '') {
+            return
         }
-        this.currentOperand = parseFloat(computation.toFixed(10))
+
+        let computation
+        try {
+            const prev = new Decimal(this.previousOperand)
+            const current = new Decimal(this.currentOperand)
+
+            switch (this.operation) {
+                case '+':
+                    computation = prev.plus(current)
+                    break
+                case '-':
+                    computation = prev.minus(current)
+                    break
+                case '×':
+                    computation = prev.times(current)
+                    break
+                case '÷':
+                    if (current.isZero()) {
+                        this.currentOperand = 'Fehler'
+                        this.operation = undefined
+                        this.previousOperand = ''
+                        return
+                    }
+                    computation = prev.div(current)
+                    break
+                default:
+                    return
+            }
+
+            this.currentOperand = computation.toString()
+        } catch (e) {
+            this.currentOperand = 'Fehler'
+        }
+
         this.operation = undefined
         this.previousOperand = ''
     }
 
     getDisplayNumber(number) {
         if (number == null || number === '') return ''
+        if (number === 'Fehler') return 'Fehler'
         const [integer, decimal] = number.toString().split('.')
-        const integerDisplay = Number(integer).toLocaleString('en')
+        const integerDisplay = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
         if (decimal != null) {
             return `${integerDisplay}.${decimal}`
         } else {
